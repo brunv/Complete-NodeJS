@@ -20,3 +20,4 @@ console.log(validator.isEmail('developer.brunv@gmail.com'));
 console.log(validator.isEmail('developer.brunvgmail.com'));
 
 console.log(validator.isURL('http://brunv.com'));
+console.log(validator.isURL('https://brunv'));
