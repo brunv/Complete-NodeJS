@@ -11,3 +11,7 @@ As you add more code, you’ll want to stay organized and break your Node.js app
 
 ##### Exporting from files
 Node.js provides the required script with a place to store values that should be exported as part of the library. This is on ```module.exports```.
+
+## Command Line Arguments
+We can access command line argumments with ```process.argv```.
+To parse command strings like *--title="Title"*.
