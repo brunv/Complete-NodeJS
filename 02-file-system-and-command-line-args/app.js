@@ -1,12 +1,36 @@
-// Getting argument from console
-const command = process.argv[2];
+const yargs = require('yargs');
 
-switch (command) {
-    case 'add':
-        console.log('Adding note!');
-        // console.log(process.argv[3]); // does not work for things like --save
-        break;
-    case 'remove':
-        console.log('Removing note!');
-        break;
-}
+// Getting argument from console manually
+// console.log(process.argv);
+// const command = process.argv[2];
+
+// Getting argument from console with 'yargs':
+// console.log(yargs.argv);
+
+// Customize yargs version
+yargs.version('1.1.0');
+
+// Creating commands
+yargs.command({
+    command: 'list',
+    describe: 'List all the notes.',
+    handler: () => console.log('Listing out the notes!')
+});
+
+yargs.command({
+    command: 'read',
+    describe: 'Read a note.',
+    handler: () => console.log('Reading the note!')
+});
+
+yargs.command({
+    command: 'add',
+    describe: 'Add a new note.',
+    handler: () => console.log('Adding note!')
+});
+
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a note.',
+    handler: () => console.log('Removing the note!')
+}).argv;
