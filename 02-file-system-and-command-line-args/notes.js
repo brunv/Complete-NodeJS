@@ -1,8 +1,13 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = () => {
-    return 'notes...';
+const listNotes = () => {
+    const notes = loadNotes();
+
+    console.log(chalk.yellow.inverse('YOUR NOTES:'));
+    notes.forEach(note => {
+        console.log('> ' + chalk.yellow(note.title));
+    });
 };
 
 const addNote = (title, body) => {
@@ -50,7 +55,7 @@ const saveNotes = (notes) => {
 }
 
 module.exports = {
-    getNotes: getNotes,
+    listNotes: listNotes,
     addNote: addNote,
     removeNote: removeNote
 }
