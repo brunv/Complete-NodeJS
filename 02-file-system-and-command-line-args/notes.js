@@ -17,9 +17,9 @@ const addNote = function (title, body) {
             body: body
         });
         saveNotes(notes);
-        console.log('New note added!');
+        console.log(chalk.green.inverse('New note added!'));
     } else {
-        console.log('This title is already in use!');
+        console.log(chalk.red.inverse('This title is already in use!'));
     }
 }
 
