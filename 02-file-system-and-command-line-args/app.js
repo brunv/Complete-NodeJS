@@ -1,4 +1,5 @@
 const yargs = require('yargs');
+const notes = require('./notes.js');
 
 // Getting argument from console manually
 // console.log(process.argv);
@@ -38,7 +39,9 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: (argv) => console.log(`Title: ${argv.title} \nBody: ${argv.body}`)
+    handler: (argv) => {
+        notes.addNote(argv.title, argv.body);
+    }
 });
 
 yargs.command({
