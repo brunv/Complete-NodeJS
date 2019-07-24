@@ -1,1 +1,6 @@
-[{"title":"my title","body":"m"}]
+[
+    {
+        "title": "my title",
+        "body": "this is my message body!"
+    }
+]
