@@ -14,4 +14,4 @@ Node.js provides the required script with a place to store values that should be
 
 ## Command Line Arguments
 We can access command line argumments with ```process.argv```.
-To parse command strings like *--title="Title"*.
+To parse command strings like *--title="Title"* we can use a module called **yargs**.
