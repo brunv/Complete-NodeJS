@@ -54,3 +54,9 @@ debugger // Debug tools will pause here until your click play again
  
 console.log('Thing two)
 ```
+
+#### In case you got the timeout error on port 9229
+If you're seeing this error *"Timeout (2000) waiting for 127.0.0.1:9229 to be free"* and can't get it to work, try this instead:
+```
+node --inspect-brk=127.0.0.1:9229 .\app.js add --title="Test 5" --body="This is just a test"
+```
