@@ -39,3 +39,18 @@ console.log(bookObject.title)
     "age":54
 }
 ```
+
+## Node Debugger
+Printing values to the console with ```console.log``` is a good start, but there are often times where we need a more complete debugging solution. For that, Node.js ships with a built-in debugger. It builds off of the developer tools that Chrome and V8 use when debugging JavaScript code in the browser. Start your application with ```inspect``` to use the debugger, like this:
+```
+node inspect app.js
+```
+Next, visit ```chrome://inspect``` in the Chrome browser. There, you’ll see a list of all the Node.js processes that you’re able to debug. Click “inspect” next to your Node.js process to open up the developer tools. From there, you can click the blue “play” button near the top-right of the “sources” tab to start up the application.
+When running the app in debug mode, you can add breakpoints into your application to stop it at a specific point in the code. This gives you a chance to explore to the application state and figure out what’s going wrong.
+```
+console.log('Thing one) 
+ 
+debugger // Debug tools will pause here until your click play again 
+ 
+console.log('Thing two)
+```
