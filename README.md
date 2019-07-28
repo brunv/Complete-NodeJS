@@ -40,6 +40,28 @@ console.log(bookObject.title)
 }
 ```
 
+## The *this* binding in Arrow Functions
+Arrow functions don’t bind their own ```this``` value. Instead, the ```this``` value of the scope in which it was defined is accessible. This makes arrow functions bad candidates for methods, as ```this``` won’t be a reference to the object the method is defined on.
+
+For methods, ES6 provides a new method definition syntax. You can see this in the definition of the ```printGuestList``` method below. That function is a standard function, just with a shorthand syntax which allows for the removal of the colon and the function keyword.
+
+Because arrow functions don’t bind this, they work well for everything except methods. As shown below, the arrow function passed to ```forEach``` is able to access ```this.name``` correctly, as it’s defined as an arrow function and doesn’t have a this binding of its own. That code wouldn’t work if you swapped out the arrow function for a standard function.
+
+```
+const event = {
+    name: 'Birthday Party',
+    guestList: ['Andrew', 'Jen', 'Mike'],
+    printGuestList() {
+        console.log('Guest list for ' + this.name);
+        this.guestList.forEach((guest) => {
+            console.log(guest + ' is attending ' + this.name);
+        });
+    }
+} 
+ 
+event.printGuestList()
+```
+
 ## Node Debugger
 Printing values to the console with ```console.log``` is a good start, but there are often times where we need a more complete debugging solution. For that, Node.js ships with a built-in debugger. It builds off of the developer tools that Chrome and V8 use when debugging JavaScript code in the browser. Start your application with ```inspect``` to use the debugger, like this:
 ```
