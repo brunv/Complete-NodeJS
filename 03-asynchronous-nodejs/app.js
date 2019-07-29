@@ -13,3 +13,11 @@ function currentForecast(data) {
     const forecast = `${summary}. It is currently ${temperature}ºC degrees out. There is a ${precipProbability}% chance of rain.`;
     console.log(forecast);
 }
+
+const geocodeURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiYnJ1bnYiLCJhIjoiY2p5b2pqb3pnMDBoMTNjcnpmZTNzZWk5biJ9.dlnyZ7KZwHhjoQlRlJTvEw';
+
+request({ url: geocodeURL, json: true }, (error, response) => {
+    const latitude = response.body.features[0].center[1];
+    const longitude = response.body.features[0].center[0];
+    console.log(`Latitude: ${latitude} \nLongitude: ${longitude}`);
+});
