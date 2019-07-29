@@ -70,11 +70,11 @@ node inspect app.js
 Next, visit ```chrome://inspect``` in the Chrome browser. There, you’ll see a list of all the Node.js processes that you’re able to debug. Click “inspect” next to your Node.js process to open up the developer tools. From there, you can click the blue “play” button near the top-right of the “sources” tab to start up the application.
 When running the app in debug mode, you can add breakpoints into your application to stop it at a specific point in the code. This gives you a chance to explore to the application state and figure out what’s going wrong.
 ```
-console.log('Thing one) 
+console.log('Thing one') 
  
 debugger // Debug tools will pause here until your click play again 
  
-console.log('Thing two)
+console.log('Thing two')
 ```
 
 #### In case you got the timeout error on port 9229
