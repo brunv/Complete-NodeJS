@@ -51,6 +51,22 @@ app.get('/weather', (req, res) => {
     });
 });
 
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        errorMessage: 'Help article not found.',
+        name: 'brunv'
+    });
+});
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        errorMessage: 'Page not found.',
+        name: 'brunv'
+    });
+});
+
 app.listen(3000, () => {
     console.log('Up and running on port 3000!');
 });
