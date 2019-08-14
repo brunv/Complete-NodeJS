@@ -8,24 +8,31 @@ const express = require('express');
 const app = express();
 const publicDirectoryPath = path.join(__dirname, '../public');
 
+// configuring express to use the view engine HBS so with we can render handlebars:
+app.set('view engine', 'hbs');
+// static pages:
 app.use(express.static(publicDirectoryPath));
 
-// app.get('/help', (req, res) => {
-//     // sending back JSON
-//     res.send([{
-//         name: 'Andrew',
-//         age: 27
-//     }, {
-//         name: 'Sarah',
-//         age: 34
-//     }
-//     ]);
-// });
+app.get('', (req, res) => {
+    // rendering handlebars template and passing contents to the view:
+    res.render('index', {
+        title: 'Weather App',
+        name: 'Andrew Mead'
+    });
+});
 
-// app.get('/about', (req, res) => {
-//     // sending back HTML
-//     res.send('<h2>This is the about page!</h2>');
-// });
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About Us',
+        name: 'brunv'
+    });
+});
+
+app.get('/help', (req, res) => {
+    res.render('help', {
+        message: 'I hope this page can help you...'
+    })
+});
 
 app.get('/weather', (req, res) => {
     res.send({
