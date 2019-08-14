@@ -6,11 +6,16 @@ const express = require('express');
 // console.log(path.join(__dirname, '../public'));
 
 const app = express();
-const publicDirectoryPath = path.join(__dirname, '../public');
 
-// configuring express to use the view engine HBS so with we can render handlebars:
+// Define paths for Express config:
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../templates');
+
+// Setup handlebars engine and views location:
 app.set('view engine', 'hbs');
-// static pages:
+app.set('views', viewsPath);
+
+// Setup static directory to serve:
 app.use(express.static(publicDirectoryPath));
 
 app.get('', (req, res) => {
