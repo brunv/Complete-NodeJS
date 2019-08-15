@@ -51,6 +51,8 @@ app.get('/weather', (req, res) => {
         });
     }
 
+
+
     res.send({
         location: 'Philly',
         forecast: 'Beatiful sunny day.',
