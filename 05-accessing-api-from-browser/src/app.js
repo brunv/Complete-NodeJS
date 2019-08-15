@@ -55,12 +55,19 @@ app.get('/weather', (req, res) => {
 
     const { address } = req.query;
 
-    geocode(address, (error, { latitude, longitude, location }) => {
+    /**
+     * The problem here is that when the user enters a invalid address
+     * the geocode function returns (error, undefined).
+     * This causes the server to crash because it's trying to destructure
+     * undefined into latitude, longitude and location.
+     * To fix that we set up an empty object as the default value.
+     */
+    geocode(address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
             return res.send({ error });
         }
 
-        forecast(latitude, longitude, (error, { summary, temperature, precipProbability }) => {
+        forecast(latitude, longitude, (error, { summary, temperature, precipProbability } = {}) => {
             if (error) {
                 return res.send({ error });
             }
