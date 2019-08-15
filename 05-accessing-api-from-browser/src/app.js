@@ -45,9 +45,28 @@ app.get('/help', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
+    if (!req.query.address) {
+        res.send({
+            error: 'You must provide a address'
+        });
+    }
+
     res.send({
         location: 'Philly',
-        forecast: 'Beatiful sunny day.'
+        forecast: 'Beatiful sunny day.',
+        address: req.query.address
+    });
+});
+
+app.get('/products', (req, res) => {
+    if (!req.query.search) {
+        return res.send({
+            error: 'You must provide a search term'
+        });
+    }
+
+    res.send({
+        products: []
     });
 });
 
