@@ -74,9 +74,7 @@ app.get('/weather', (req, res) => {
 
             res.send({
                 location,
-                forecast: summary,
-                temperature,
-                precipProbability
+                forecast: `${summary} It is currently ${temperature}°C out. There is a ${precipProbability}% chance of rain.`
             });
         });
     });
