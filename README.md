@@ -1,5 +1,9 @@
 # Complete NodeJS Study Repository
 
+Resouces:
+- The Complete NodeJS Course by Andrew Mead on [Udemy](https://www.udemy.com/the-complete-nodejs-developer-course-2)
+- NPM Crash Course by Traversy Media on [YouTube](https://www.youtube.com/watch?v=jHDhaSSKmB0)
+
 ## The Module System
 The module system lets you load external libraries into your application. That’ll enable you to take advantage of built-in Node.js modules as well as third-party npm modules. This includes libraries for connecting to database, creating web servers, and more!
 
@@ -82,3 +86,31 @@ If you're seeing this error *"Timeout (2000) waiting for 127.0.0.1:9229 to be fr
 ```
 node --inspect-brk=127.0.0.1:9229 .\app.js add --title="Test 5" --body="This is just a test"
 ```
+
+## MongoDB
+
+### Installation
+##### If you're using the .zip
+Place the *mongodb* folder anywhere you want and create another folder to store the databases. Here we will call it *mongodb-databases*.
+
+To run MongoDB you can use following command:
+```
+$ _path_to_the_mongodb_folder/mongodb/bin/mongod.exe --dbpath=/_path_to_databases_/mongodb-databases
+```
+
+##### If you're intalling through .msi
+Install the Complete version. When you hit the window asking about installing MongoDB as a Service, you can install it in either way. Here are the differences:
+
+- Running MongoDB as a service gives you some flexibility with how you can run and deploy MongoDB. For example, you can have MongoDB run at startup and restart on failures. If you don't set MongoDB up as a service, you will have to run the MongoDB server every time.
+- Running MongoDB as a network service means that your service will have permission to access the network with the same credentials as the computer you are using. Running MongoDB locally will run the service without network connectivity.
+
+More on [MongoDB DOC](https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/).
+
+##### Installing with Chocolatey
+```
+choco install mongodb -y
+choco install robo3t -y
+```
+
+#### Installing MongoDB Drivers in your project
+Just install the MongoDB NPM package: ```npm install mongodb```
