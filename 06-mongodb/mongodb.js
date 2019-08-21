@@ -2,8 +2,14 @@ const mongodb = require('mongodb');
 
 // MongoDB configs:
 const MongoClient = mongodb.MongoClient;
+const ObjectID = mongodb.ObjectID;
 const connectionURL = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-manager';
+
+const id = new ObjectID();
+console.log(id);
+// console.log(id.toHexString().length);
+// console.log(id.getTimestamp());
 
 // Connecting to the database:
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
@@ -16,8 +22,9 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // Insert a single document to the 'users' collection:
     // (this is asynchronous)
     // db.collection('users').insertOne({
-    //     name: 'Andrew',
-    //     age: 27
+    //     // _id: id,
+    //     name: 'Grace',
+    //     age: 29
     // }, (error, result) => {
     //     if (error) {
     //         return console.log('Unable to insert user!');
@@ -28,24 +35,24 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // });
 
     // insert many documents:
-    db.collection('tasks').insertMany([
-        {
-            description: 'Buy groceries.',
-            completed: true
-        },
-        {
-            description: 'Take Andrew Mead\'s NodeJs course.',
-            completed: true
-        },
-        {
-            description: 'Start my own projects.',
-            completed: false
-        }
-    ], (error, result) => {
-        if (error) {
-            return console.log('Unable to insert tasks!');
-        }
+    // db.collection('tasks').insertMany([
+    //     {
+    //         description: 'Buy groceries.',
+    //         completed: true
+    //     },
+    //     {
+    //         description: 'Take Andrew Mead\'s NodeJs course.',
+    //         completed: true
+    //     },
+    //     {
+    //         description: 'Start my own projects.',
+    //         completed: false
+    //     }
+    // ], (error, result) => {
+    //     if (error) {
+    //         return console.log('Unable to insert tasks!');
+    //     }
 
-        console.log(result.ops);
-    });
+    //     console.log(result.ops);
+    // });
 });
