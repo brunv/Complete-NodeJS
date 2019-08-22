@@ -15,23 +15,23 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
 
     const db = client.db(databaseName);
 
-    /* UPDATE */
+    /** UPDATE **/
 
-    // db.collection('users').updateOne({
-    //     _id: new ObjectID("5d5c716583a3c85074efdfe8")
-    // }, {
-    //         // $set: {
-    //         //     name: 'May'
-    //         // }
-    //         $inc: {
-    //             age: 1
-    //         }
-    //     }
-    // ).then((result) => {
-    //     console.log(result);
-    // }).catch((error) => {
-    //     console.log(error);
-    // });
+    db.collection('users').updateOne({
+        _id: new ObjectID("5d5c716583a3c85074efdfe8")
+    }, {
+            // $set: {
+            //     name: 'May'
+            // }
+            $inc: {
+                age: 1
+            }
+        }
+    ).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
+    });
 
     db.collection('tasks').updateMany({
         completed: false
@@ -44,5 +44,23 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
         console.log(result.modifiedCount);
     }).catch((error) => {
         console.log(error);
+    });
+
+    /** DELETE **/
+
+    db.collection('users').deleteMany({
+        age: 29
+    }).then((result) => {
+        console.log(result.deletedCount);
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    db.collection('tasks').deleteOne({
+        description: 'Buy groceries.'
+    }).then((result) => {
+        console.log(result.deletedCount);
+    }).catch((error) => {
+        console.log(result);
     });
 });

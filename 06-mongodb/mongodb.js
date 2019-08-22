@@ -23,40 +23,40 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
 
     // Insert a single document to the 'users' collection:
     // (this is asynchronous)
-    // db.collection('users').insertOne({
-    //     // _id: id,
-    //     name: 'Grace',
-    //     age: 29
-    // }, (error, result) => {
-    //     if (error) {
-    //         return console.log('Unable to insert user!');
-    //     }
+    db.collection('users').insertOne({
+        // _id: id,
+        name: 'Grace',
+        age: 29
+    }, (error, result) => {
+        if (error) {
+            return console.log('Unable to insert user!');
+        }
 
-    //     // shows the data that have just been inserted:
-    //     console.log(result.ops);
-    // });
+        // shows the data that have just been inserted:
+        console.log(result.ops);
+    });
 
     // insert many documents:
-    // db.collection('tasks').insertMany([
-    //     {
-    //         description: 'Buy groceries.',
-    //         completed: true
-    //     },
-    //     {
-    //         description: 'Take Andrew Mead\'s NodeJs course.',
-    //         completed: true
-    //     },
-    //     {
-    //         description: 'Start my own projects.',
-    //         completed: false
-    //     }
-    // ], (error, result) => {
-    //     if (error) {
-    //         return console.log('Unable to insert tasks!');
-    //     }
+    db.collection('tasks').insertMany([
+        {
+            description: 'Buy groceries.',
+            completed: true
+        },
+        {
+            description: 'Take Andrew Mead\'s NodeJs course.',
+            completed: true
+        },
+        {
+            description: 'Start my own projects.',
+            completed: false
+        }
+    ], (error, result) => {
+        if (error) {
+            return console.log('Unable to insert tasks!');
+        }
 
-    //     console.log(result.ops);
-    // });
+        console.log(result.ops);
+    });
 
     /* READ */
 
