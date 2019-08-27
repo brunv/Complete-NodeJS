@@ -1,6 +1,6 @@
 # Complete NodeJS Study Repository
 
-Resouces:
+Resources:
 - The Complete NodeJS Course by Andrew Mead on [Udemy](https://www.udemy.com/the-complete-nodejs-developer-course-2)
 - NPM Crash Course by Traversy Media on [YouTube](https://www.youtube.com/watch?v=jHDhaSSKmB0)
 

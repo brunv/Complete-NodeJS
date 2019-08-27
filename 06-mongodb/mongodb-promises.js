@@ -61,6 +61,6 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
     }).then((result) => {
         console.log(result.deletedCount);
     }).catch((error) => {
-        console.log(result);
+        console.log(error);
     });
 });
