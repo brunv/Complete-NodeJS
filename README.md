@@ -114,3 +114,8 @@ choco install robo3t -y
 
 #### Installing MongoDB Drivers in your project
 Just install the MongoDB NPM package: ```npm install mongodb```
+
+
+## The REST API
+REST API stands for **R**epresentational **S**tate **T**ransfer - **A**pplication **P**rogramming **I**nterface. An API is nothing more than a set of tools that allow you to build software applications. It is actually a very broad term.
+The REST API allows clients such as a web app to access and manipulate resources using a set of predefined operations. A resource can be something like a user or a task. A predefined oprational for users and tasks could be something like the ability to create a new task or to mark a task as complete or to do something a bit more advanced like upload a profile picture for your user account.
