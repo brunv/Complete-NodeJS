@@ -8,6 +8,30 @@ const port = process.env.PORT || 3000;  // Heroku or local
 
 app.use(express.json());
 
+app.get('/users', (req, res) => {
+    // Fetch all users:
+    User.find({}).then((users) => {
+        res.send(users);
+    }).catch((error) => {
+        res.status(500).send();
+    });
+});
+
+app.get('/users/:id', (req, res) => {
+    // console.log(req.params);
+    const _id = req.params.id;
+
+    // Fetch an specific user by id:
+    User.findById(_id).then((user) => {
+        if (!user) {
+            return res.status(404).send('User not found!');
+        }
+        res.send(user);
+    }).catch((error) => {
+        res.status(500).send();
+    });
+});
+
 app.post('/users', (req, res) => {
     // Create user with the request data:
     const user = new User(req.body);
