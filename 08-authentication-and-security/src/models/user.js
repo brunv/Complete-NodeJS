@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 /**
  * Mongo already creates a schema under the hood when we pass the object
@@ -44,10 +45,17 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Age must be a positive number.');
             }
         }
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 });
 
-// This creates a method for User model:
+/** MODEL METHODS **/
+
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });
 
@@ -62,6 +70,19 @@ userSchema.statics.findByCredentials = async (email, password) => {
     }
 
     return user;
+};
+
+/** INSTANCE METHODS **/
+
+userSchema.methods.generateAuthToken = async function () {
+    // we need the binding from the user we are passing so no arrow funciton here
+    const user = this;
+    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse');
+
+    user.tokens = user.tokens.concat({ token });
+    await user.save();
+
+    return token;
 };
 
 
