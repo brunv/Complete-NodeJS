@@ -122,3 +122,13 @@ The REST API allows clients such as a web app to access and manipulate resources
 
 ### HTTP Status codes
 There is a very good resource to catch up with the HTTP status code called [httpstatuses.com](https://httpstatuses.com).
+
+## Authetication and Security
+
+### Hashing Passwords
+The difference between hashing algorithms and encrypting algorithms is that with encryption we can get the original value back. Hashing algorithms are one way algorithms by design.
+
+We're going to use BCrypt. To install its library in a NodeJS project you can run the following command:
+```
+npm install bcryptjs
+```

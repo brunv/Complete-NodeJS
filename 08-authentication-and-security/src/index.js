@@ -2,6 +2,7 @@ const express = require('express');
 require('./db/mongoose');
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 const port = process.env.PORT || 3000;  // Heroku or local
@@ -13,3 +14,16 @@ app.use(taskRouter);
 app.listen(port, () => {
     console.log('Server is up and running on port ' + port);
 });
+
+const myFunction = async () => {
+    const password = 'Red12345!';
+    const hashedPassword = await bcrypt.hash(password, 8);
+
+    console.log(password);
+    console.log(hashedPassword);
+
+    const isMatch = await bcrypt.compare('red12345!', hashedPassword);
+    console.log(isMatch);
+};
+
+myFunction();
