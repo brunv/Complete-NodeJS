@@ -2,7 +2,7 @@ const express = require('express');
 require('./db/mongoose');
 const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
-const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const port = process.env.PORT || 3000;  // Heroku or local
@@ -16,14 +16,11 @@ app.listen(port, () => {
 });
 
 const myFunction = async () => {
-    const password = 'Red12345!';
-    const hashedPassword = await bcrypt.hash(password, 8);
+    const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcourse', { expiresIn: '5 days' });
+    console.log(token);
 
-    console.log(password);
-    console.log(hashedPassword);
-
-    const isMatch = await bcrypt.compare('red12345!', hashedPassword);
-    console.log(isMatch);
+    const data = jwt.verify(token, 'thisismynewcourse');
+    console.log(data);
 };
 
 myFunction();

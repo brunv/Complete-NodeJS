@@ -132,3 +132,22 @@ We're going to use BCrypt. To install its library in a NodeJS project you can ru
 ```
 npm install bcryptjs
 ```
+
+### JSON Web Tokens (JWT)
+JWTs provide a nice system for issuing and validating authentication tokens. The authentication token will ensure that the client doesn’t need to log in every time they want to perform an operation on the server.
+
+To install the library: ``` npm install jsonwebtoken ```
+
+``` eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJhYmMxMjMiLCJpYXQiOjE1NjcyNzc2OTF9.KrDVzvWy47c639eg5C-Dv7NuKChu-cYpzDjO_7R6htc ```. This is our JWT. It is actually made up of three distinct parts separated by the period. The first piece of the token is a base64 enconded JSON String and it's known as the header. It contains some meta information about what type of token it is and the algorithms that was used to generate it. The second piece in between the two periods it's known as the payload or body. It's also a base64 encoded JSON String and contains the data the we provided. The last piece of the token is called signature and it's used to verify the token later on.
+
+So the goal of the JWT isn't to hide the data that we've provided. This is actually publicly viewable to anyone who has the token. So the whole point of the JWT is to create data that's verifiable via the signature. So if someone else comes along and tries to change the data they're not going to be able to do so successfully because they won't know what secret was used with the algorithm that created it.
+
+The decoded data looks like this:
+```
+{
+    "_id": "abc123",
+    "iat": 1546013686
+}
+```
+
+That *_id* was provided in the example and the *iat* stand of *Issued At* which is a timestamp when the token was created.
