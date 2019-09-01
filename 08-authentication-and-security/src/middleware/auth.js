@@ -12,7 +12,7 @@ const auth = async (req, res, next) => {
         }
 
         // Add the 'user' property to the request so the route handlers
-        // will be bale to access it later on:
+        // will be able to access it later on:
         req.user = user;
         next();
     } catch (e) {
