@@ -54,6 +54,16 @@ const userSchema = new mongoose.Schema({
     }]
 });
 
+/** VIRTUAL PROPERTY **/
+
+// A virtual property is not actual data stored in the database. It's a
+// relationship between two entities.
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'owner'
+});
+
 /** MODEL METHODS **/
 
 userSchema.statics.findByCredentials = async (email, password) => {
