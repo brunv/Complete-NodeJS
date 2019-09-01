@@ -74,6 +74,16 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 /** INSTANCE METHODS **/
 
+userSchema.methods.getPublicProfile = function () {
+    const user = this;
+    const userObject = user.toObject();
+
+    delete userObject.password;
+    delete userObject.tokens;
+
+    return userObject;
+}
+
 userSchema.methods.generateAuthToken = async function () {
     // we need the binding from the user we are passing so no arrow funciton here
     const user = this;
