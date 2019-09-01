@@ -11,8 +11,9 @@ const auth = async (req, res, next) => {
             throw new Error();
         }
 
-        // Add the 'user' property to the request so the route handlers
-        // will be able to access it later on:
+        // Add the 'user' and 'token' property to the request so the route
+        // handlers will be able to access it later on:
+        req.token = token;
         req.user = user;
         next();
     } catch (e) {
