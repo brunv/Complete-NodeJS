@@ -74,7 +74,18 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 /** INSTANCE METHODS **/
 
-userSchema.methods.getPublicProfile = function () {
+userSchema.methods.toJSON = function () {
+    /**
+     * Changing this from 'getPublicProfile' to 'toJSON' means we have the
+     * exact same behavior any other time we are sending the user back.
+     * 
+     * How does it even run if we're never explicity calling this from anywhere?
+     * Everytime we send a response, Express uses 'JSON.strigify()' under the
+     * hood. Whenever that object in response gets stringified it's gonna call
+     * the .toJSON method implicitly so all we need to do is to define a
+     * functions that will do what we want.
+     * 
+     */
     const user = this;
     const userObject = user.toObject();
 
