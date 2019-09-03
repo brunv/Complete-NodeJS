@@ -151,3 +151,6 @@ The decoded data looks like this:
 ```
 
 That *_id* was provided in the example and the *iat* stand of *Issued At* which is a timestamp when the token was created.
+
+## File Upload
+Express doesn't support file uploads but here is an NPM library also released and maintained by the same team that maintains Express. And this allows you to add file uploads to express with just a couple lines of code. This library is called Multer. We can install by doing ```npm install multer```. Multer is a node.js middleware for handling *multipart/form-data*, which is primarily used for uploading files.
