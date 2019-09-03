@@ -108,6 +108,13 @@ userSchema.methods.toJSON = function () {
 
     delete userObject.password;
     delete userObject.tokens;
+    /**
+     * We're deleting the avatar data of the JSON in response because the data is
+     * so large that it can slow down those JSON based requests.
+     * We set up a URL that can serve the image up so there's no need to send it
+     * back with profile requests.
+     */
+    delete userObject.avatar;
 
     return userObject;
 }

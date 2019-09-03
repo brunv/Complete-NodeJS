@@ -155,5 +155,8 @@ That *_id* was provided in the example and the *iat* stand of *Issued At* which 
 ## File Upload
 Express doesn't support file uploads but here is an NPM library also released and maintained by the same team that maintains Express. And this allows you to add file uploads to express with just a couple lines of code. This library is called Multer. We can install by doing ```npm install multer```. Multer is a node.js middleware for handling *multipart/form-data*, which is primarily used for uploading files.
 
+### Manipulating images
+With the NPM module called Sharp we will process the images supplies by users before we save them. We'll be able to resize images, convert the image type so we can store all of our images in a unified type, and more. Sharp also allows us to cut and resize the image using a GUI in the client side.
+
 ##### To keep in mind
 In deployment servers - like Heroku and AWS - the file system actually gets wiped every time you deploy, which means that we would lose the data - like the user images. So instead of storing them on the file system we're going to add a field onto the User model to store the image of binary data.
