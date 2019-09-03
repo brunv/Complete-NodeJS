@@ -27,8 +27,15 @@ const upload = multer({
         // cb(undefined, false);   // no error and rejects upload
     }
 });
+// const errorMiddleware = (req, res, next) => {
+//     throw new Error('From my middleware!');
+// };
 app.post('/upload', upload.single('upload'), (req, res) => {
     res.send();
+}, (error, req, res, next) => {
+    // It's important that we provide all four of these, so express knows
+    // that this function is designed to handle errors.
+    res.status(400).send({ error: error.message });
 });
 
 app.use(express.json());
