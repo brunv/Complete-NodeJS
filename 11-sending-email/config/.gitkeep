@@ -1,0 +1,3 @@
+# Please create a dev.env file with your environment variables
+# The variables used in this app are:
+# PORT, SENDGRID_API_KEY, JWT_SECRET, MONGODB_URL

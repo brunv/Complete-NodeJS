@@ -160,3 +160,8 @@ With the NPM module called Sharp we will process the images supplies by users be
 
 ##### To keep in mind
 In deployment servers - like Heroku and AWS - the file system actually gets wiped every time you deploy, which means that we would lose the data - like the user images. So instead of storing them on the file system we're going to add a field onto the User model to store the image of binary data.
+
+## Environment Variables
+Environment variable are important for two main reasons. The first has to do with security and the second has todo with customizability. We set values for when the app is running on production and when it's running locally. Its also a good ideia to use environment variable to avoid sensitive data going in to git.
+
+The library used in this course is called *env-cmd* but there better ones like *dotenv*.

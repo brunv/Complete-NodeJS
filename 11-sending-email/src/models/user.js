@@ -57,8 +57,8 @@ const userSchema = new mongoose.Schema({
         type: Buffer
     }
 }, {
-        timestamps: true
-    }
+    timestamps: true
+}
 );
 
 /** VIRTUAL PROPERTY **/
@@ -122,7 +122,7 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.generateAuthToken = async function () {
     // we need the binding from the user we are passing so no arrow funciton here
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewcourse');
+    const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET);
 
     user.tokens = user.tokens.concat({ token });
     await user.save();

@@ -4,7 +4,7 @@ const userRouter = require('./routers/user');
 const taskRouter = require('./routers/task');
 
 const app = express();
-const port = process.env.PORT || 3000;  // Heroku or local
+const port = process.env.PORT;  // Heroku or local
 
 app.use(express.json());
 app.use(userRouter);
