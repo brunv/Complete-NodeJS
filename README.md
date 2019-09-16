@@ -165,3 +165,17 @@ In deployment servers - like Heroku and AWS - the file system actually gets wipe
 Environment variable are important for two main reasons. The first has to do with security and the second has todo with customizability. We set values for when the app is running on production and when it's running locally. Its also a good ideia to use environment variable to avoid sensitive data going in to git.
 
 The library used in this course is called *env-cmd* but there better ones like *dotenv*.
+
+## Testing with Jest
+To install Jest as a Dev Dependency we can run ```npm install jest --save-dev```.
+
+When we register a test we call the *test()* function providing a name and the function. When Jest runs our tests it simply runs that function. If the function throws an error then the test case is considered a failure. If the function does not throw an error then the test case is considered success.
+
+#### Why make tests?
+- **Saves time**: we write code once to test a specific feature and we can run it as many ties as we'd like. This is gonna be even greater as your application grows in size. It will no longer be feasible to manually test everything and you'll rely on an automatic test suite.
+- **Creates realiable software**: you'll be able to spot and fix bugs before they actually get shipped to production and mess up users. This becomes even better when you integrate a test suite to your repository, that only allows deployment if all tests succeed.
+- **Gives flexibility to developers**:
+  - Refatoring
+  - Collaborating
+  - Profiling (you can see if the speed your test cases run goes up or down as you make changes)
+- **Peace of mind**.
