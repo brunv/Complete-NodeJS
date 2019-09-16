@@ -1,4 +1,4 @@
-const { calculateTip, celsiusToFahrenheit, fahrenheitToCelsius } = require('../src/math');
+const { calculateTip, celsiusToFahrenheit, fahrenheitToCelsius, add } = require('../src/math');
 
 // test('Hello World!', () => {
 //     // This empty test will run successfully.
@@ -32,4 +32,28 @@ test('Should convert 32 F to 0 C', () => {
 test('Should convert 0 C to 32 F', () => {
     const temp = celsiusToFahrenheit(0);
     expect(temp).toBe(32);
+});
+
+// Example of asynchronous test:
+// test('Async test demo.', (done) => {
+//     setTimeout(() => {
+//         expect(1).toBe(2);
+//         done();
+//     }, 2000);
+// });
+
+/**
+ * Example of asynchronous test with promises or async/await:
+ */
+test('Should add two numbers!', (done) => {
+    add(2, 3).then((sum) => {
+        expect(sum).toBe(5);
+        done();
+    });
+});
+
+// Common approach:
+test('Should add two number async/await.', async () => {
+    const sum = await add(10, 15);
+    expect(sum).toBe(25);
 });
