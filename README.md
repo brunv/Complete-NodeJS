@@ -171,6 +171,10 @@ To install Jest as a Dev Dependency we can run ```npm install jest --save-dev```
 
 When we register a test we call the *test()* function providing a name and the function. When Jest runs our tests it simply runs that function. If the function throws an error then the test case is considered a failure. If the function does not throw an error then the test case is considered success.
 
+To test express application we'll use a library called *SuperTest* that can be installed by running ```npm install supertest --save-dev```.
+
+It's a good thing to have a separate database for testing purposes. When our test cases run we need to make sure they're starting from a nice clean slate by wiping all of the data in the test database before the test cases execute to make sure they can run consistently over time.
+
 #### Why make tests?
 - **Saves time**: we write code once to test a specific feature and we can run it as many ties as we'd like. This is gonna be even greater as your application grows in size. It will no longer be feasible to manually test everything and you'll rely on an automatic test suite.
 - **Creates realiable software**: you'll be able to spot and fix bugs before they actually get shipped to production and mess up users. This becomes even better when you integrate a test suite to your repository, that only allows deployment if all tests succeed.
