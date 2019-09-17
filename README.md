@@ -177,6 +177,8 @@ It's a good thing to have a separate database for testing purposes. When our tes
 
 In the testing world a fixture or fixtures are things that allow you to set up the environment your tests are going to run in. In this course we're going to put an image inse of that directory so our tests can use when they're traying to upload an image to test that endpoint.
 
+It's important to recognize that our test cases can interfere with each other if we let them. With Jest we can fix this by running the opting ```--runInBand``` along with the ```jest``` command. To see the result check the ```package.json``` in the chapter 12.
+
 #### Why make tests?
 - **Saves time**: we write code once to test a specific feature and we can run it as many ties as we'd like. This is gonna be even greater as your application grows in size. It will no longer be feasible to manually test everything and you'll rely on an automatic test suite.
 - **Creates realiable software**: you'll be able to spot and fix bugs before they actually get shipped to production and mess up users. This becomes even better when you integrate a test suite to your repository, that only allows deployment if all tests succeed.
