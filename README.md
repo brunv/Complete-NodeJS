@@ -175,6 +175,8 @@ To test express application we'll use a library called *SuperTest* that can be i
 
 It's a good thing to have a separate database for testing purposes. When our test cases run we need to make sure they're starting from a nice clean slate by wiping all of the data in the test database before the test cases execute to make sure they can run consistently over time.
 
+In the testing world a fixture or fixtures are things that allow you to set up the environment your tests are going to run in. In this course we're going to put an image inse of that directory so our tests can use when they're traying to upload an image to test that endpoint.
+
 #### Why make tests?
 - **Saves time**: we write code once to test a specific feature and we can run it as many ties as we'd like. This is gonna be even greater as your application grows in size. It will no longer be feasible to manually test everything and you'll rely on an automatic test suite.
 - **Creates realiable software**: you'll be able to spot and fix bugs before they actually get shipped to production and mess up users. This becomes even better when you integrate a test suite to your repository, that only allows deployment if all tests succeed.
