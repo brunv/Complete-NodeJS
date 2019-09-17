@@ -183,3 +183,6 @@ It's a good thing to have a separate database for testing purposes. When our tes
   - Collaborating
   - Profiling (you can see if the speed your test cases run goes up or down as you make changes)
 - **Peace of mind**.
+
+### Mocking NPM modules
+The process of mocking is the process of replacing the real functions that run with functions that you create when we're running in a test environment. One good example of this usage is when we have functions that send email when certain event occurs. We don't want to send those emails everytime we run a test suite - except when we are explicitly testing emails - so we create fake functions that does nothing, like the ones in ```/tests/__mocks__/@sendgrid/mail.js```.
