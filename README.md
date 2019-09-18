@@ -190,3 +190,21 @@ It's important to recognize that our test cases can interfere with each other if
 
 ### Mocking NPM modules
 The process of mocking is the process of replacing the real functions that run with functions that you create when we're running in a test environment. One good example of this usage is when we have functions that send email when certain event occurs. We don't want to send those emails everytime we run a test suite - except when we are explicitly testing emails - so we create fake functions that does nothing, like the ones in ```/tests/__mocks__/@sendgrid/mail.js```.
+
+## The WebSocket Protocol
+- WebSockets allow for full-duplex (that means bidirectional) communication
+- WebSocket is a separe protocol from HTTP
+- Persistent connection between client and server
+
+### Socket.io
+The first thing we have to do is to refactor our application so we can use both Express and Socket.io. That has to happen because the *socketio()* functions expects to be called with the raw HTTP server that we create by importing the *http* core module. To wrap up, we need something like this:
+
+```
+const http = require('http');
+const express = require('express');
+const socketio = require('socket.io');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+```
