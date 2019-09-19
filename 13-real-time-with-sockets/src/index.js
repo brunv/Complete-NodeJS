@@ -2,6 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+const Filter = require('bad-words');
 
 const app = express();
 // Express library already does that under the hood. We created it for the
@@ -24,13 +25,24 @@ io.on('connection', (socket) => {
     // When we broadcast an event we send it to everyone except the current client:
     socket.broadcast.emit('message', 'A new user has joined!');
 
-    socket.on('sendMessage', (message) => {
+    socket.on('sendMessage', (message, callback) => {
+        const filter = new Filter();
+
+        if (filter.isProfane(message)) {
+            return callback('Profanity is not allowed!');
+        }
+
         // We want to emit it to every connection available:
         io.emit('message', message);
+
+        // Callback from acknowledgement:
+        callback('Delivered.');
     });
 
-    socket.on('sendLocation', (location) => {
+    socket.on('sendLocation', (location, callback) => {
         io.emit('message', `https://google.com/maps?q=${location.lat},${location.long}`);
+
+        callback();
     });
 
     // There's no 'io.on()' for listening to disconect:

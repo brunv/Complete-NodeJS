@@ -208,3 +208,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 ```
+
+#### What we can easily do with Socket.io
+- Emit an event from server to cliente and vice-versa
+- Broadcast and event (this means that everybody receives it except the current user)
+- Send acknowledgements when receiving something
