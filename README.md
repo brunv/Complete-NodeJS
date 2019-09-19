@@ -213,3 +213,4 @@ const io = socketio(server);
 - Emit an event from server to cliente and vice-versa
 - Broadcast and event (this means that everybody receives it except the current user)
 - Send acknowledgements when receiving something
+- Join a specific room

@@ -21,10 +21,22 @@ io.on('connection', (socket) => {
     console.log('New WebSocket connection');
 
     // Here we are emitting the event to a particular connection:
-    socket.emit('message', generateMessage('Welcome!'));
+    // socket.emit('message', generateMessage('Welcome!'));
 
     // When we broadcast an event we send it to everyone except the current client:
-    socket.broadcast.emit('message', generateMessage('A new user has joined!'));
+    // socket.broadcast.emit('message', generateMessage('A new user has joined!'));
+
+    socket.on('join', ({ username, room }) => {
+        socket.join(room);
+
+        socket.emit('message', generateMessage('Welcome!'));
+
+        // Emits an event to everybody in a specific room:
+        // io.to().emit();
+
+        // Send an event to everyone except for the specific client also limited to a specific room:
+        socket.broadcast.to(room).emit('message', generateMessage(`${username} has joined!`));
+    });
 
     socket.on('sendMessage', (message, callback) => {
         const filter = new Filter();
