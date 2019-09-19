@@ -3,6 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
+const { generateMessage } = require('./utils/messages');
 
 const app = express();
 // Express library already does that under the hood. We created it for the
@@ -20,10 +21,10 @@ io.on('connection', (socket) => {
     console.log('New WebSocket connection');
 
     // Here we are emitting the event to a particular connection:
-    socket.emit('message', 'Welcome!');
+    socket.emit('message', generateMessage('Welcome!'));
 
     // When we broadcast an event we send it to everyone except the current client:
-    socket.broadcast.emit('message', 'A new user has joined!');
+    socket.broadcast.emit('message', generateMessage('A new user has joined!'));
 
     socket.on('sendMessage', (message, callback) => {
         const filter = new Filter();
@@ -33,7 +34,7 @@ io.on('connection', (socket) => {
         }
 
         // We want to emit it to every connection available:
-        io.emit('message', message);
+        io.emit('message', generateMessage(message));
 
         // Callback from acknowledgement:
         callback('Delivered.');
@@ -47,7 +48,7 @@ io.on('connection', (socket) => {
 
     // There's no 'io.on()' for listening to disconect:
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left!');
+        io.emit('message', generateMessage('A user has left!'));
     });
 });
 
