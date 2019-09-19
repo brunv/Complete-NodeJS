@@ -3,7 +3,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
-const { generateMessage } = require('./utils/messages');
+const { generateMessage, generateLocationMessage } = require('./utils/messages');
 
 const app = express();
 // Express library already does that under the hood. We created it for the
@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('sendLocation', (location, callback) => {
-        io.emit('locationMessage', `https://google.com/maps?q=${location.lat},${location.long}`);
+        io.emit('locationMessage', generateLocationMessage(`https://google.com/maps?q=${location.lat},${location.long}`));
 
         callback();
     });
