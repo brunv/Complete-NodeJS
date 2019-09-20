@@ -4,6 +4,7 @@ const express = require('express');
 const socketio = require('socket.io');
 const Filter = require('bad-words');
 const { generateMessage, generateLocationMessage } = require('./utils/messages');
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users');
 
 const app = express();
 // Express library already does that under the hood. We created it for the
@@ -26,16 +27,21 @@ io.on('connection', (socket) => {
     // When we broadcast an event we send it to everyone except the current client:
     // socket.broadcast.emit('message', generateMessage('A new user has joined!'));
 
-    socket.on('join', ({ username, room }) => {
-        socket.join(room);
+    socket.on('join', ({ username, room }, callback) => {
+        const { error, user } = addUser({ id: socket.id, username, room });
+
+        if (error) {
+            return callback(error);
+        }
+
+        socket.join(user.room);
 
         socket.emit('message', generateMessage('Welcome!'));
 
-        // Emits an event to everybody in a specific room:
-        // io.to().emit();
-
         // Send an event to everyone except for the specific client also limited to a specific room:
-        socket.broadcast.to(room).emit('message', generateMessage(`${username} has joined!`));
+        socket.broadcast.to(user.room).emit('message', generateMessage(`${user.username} has joined!`));
+
+        callback();
     });
 
     socket.on('sendMessage', (message, callback) => {
@@ -60,7 +66,12 @@ io.on('connection', (socket) => {
 
     // There's no 'io.on()' for listening to disconect:
     socket.on('disconnect', () => {
-        io.emit('message', generateMessage('A user has left!'));
+        const user = removeUser(socket.id);
+
+        if (user) {
+            // Emits an event to everybody in a specific room:
+            io.to(user.room).emit('message', generateMessage(`${user.username} has left!`));
+        }
     });
 });
 
