@@ -35,11 +35,13 @@ io.on('connection', (socket) => {
         }
 
         socket.join(user.room);
-
         socket.emit('message', generateMessage('Chat App', 'Welcome!'));
-
         // Send an event to everyone except for the specific client also limited to a specific room:
         socket.broadcast.to(user.room).emit('message', generateMessage('Chat App', `${user.username} has joined!`));
+        io.to(user.room).emit('roomData', {
+            room: user.room,
+            users: getUsersInRoom(user.room)
+        });
 
         callback();
     });
@@ -74,6 +76,10 @@ io.on('connection', (socket) => {
         if (user) {
             // Emits an event to everybody in a specific room:
             io.to(user.room).emit('message', generateMessage('Chat App', `${user.username} has left!`));
+            io.to(user.room).emit('roomData', {
+                room: user.room,
+                users: getUsersInRoom(user.room)
+            });
         }
     });
 });
