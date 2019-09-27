@@ -175,7 +175,7 @@ To test express application we'll use a library called *SuperTest* that can be i
 
 It's a good thing to have a separate database for testing purposes. When our test cases run we need to make sure they're starting from a nice clean slate by wiping all of the data in the test database before the test cases execute to make sure they can run consistently over time.
 
-In the testing world a fixture or fixtures are things that allow you to set up the environment your tests are going to run in. In this course we're going to put an image inse of that directory so our tests can use when they're traying to upload an image to test that endpoint.
+In the testing world a fixture or fixtures are things that allow you to set up the environment your tests are going to run in. In this course we're going to put an image inside of that directory so our tests can use when they're trying to upload an image to test that endpoint.
 
 It's important to recognize that our test cases can interfere with each other if we let them. With Jest we can fix this by running the opting ```--runInBand``` along with the ```jest``` command. To see the result check the ```package.json``` in the chapter 12.
 
