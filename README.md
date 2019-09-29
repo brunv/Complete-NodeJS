@@ -181,9 +181,9 @@ It's important to recognize that our test cases can interfere with each other if
 
 #### Why make tests?
 - **Saves time**: we write code once to test a specific feature and we can run it as many ties as we'd like. This is gonna be even greater as your application grows in size. It will no longer be feasible to manually test everything and you'll rely on an automatic test suite.
-- **Creates realiable software**: you'll be able to spot and fix bugs before they actually get shipped to production and mess up users. This becomes even better when you integrate a test suite to your repository, that only allows deployment if all tests succeed.
+- **Creates reliable software**: you'll be able to spot and fix bugs before they actually get shipped to production and mess up users. This becomes even better when you integrate a test suite to your repository, that only allows deployment if all tests succeed.
 - **Gives flexibility to developers**:
-  - Refatoring
+  - Refactoring
   - Collaborating
   - Profiling (you can see if the speed your test cases run goes up or down as you make changes)
 - **Peace of mind**.
