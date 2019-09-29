@@ -210,7 +210,7 @@ const io = socketio(server);
 ```
 
 #### What we can easily do with Socket.io
-- Emit an event from server to cliente and vice-versa
+- Emit an event from server to client and vice-versa
 - Broadcast an event (this means that everybody receives it except the current user)
 - Send acknowledgements when receiving something
 - Join a specific room
