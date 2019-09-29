@@ -193,7 +193,7 @@ The process of mocking is the process of replacing the real functions that run w
 
 ## The WebSocket Protocol
 - WebSockets allow for full-duplex (that means bidirectional) communication
-- WebSocket is a separe protocol from HTTP
+- WebSocket is a separate protocol from HTTP
 - Persistent connection between client and server
 
 ### Socket.io
@@ -211,6 +211,6 @@ const io = socketio(server);
 
 #### What we can easily do with Socket.io
 - Emit an event from server to cliente and vice-versa
-- Broadcast and event (this means that everybody receives it except the current user)
+- Broadcast an event (this means that everybody receives it except the current user)
 - Send acknowledgements when receiving something
 - Join a specific room
